@@ -2,7 +2,7 @@
 *.class
 
 #properties
-activemq.properties
+rabbitmq.properties
 
 # Package Files #
 *.jar
