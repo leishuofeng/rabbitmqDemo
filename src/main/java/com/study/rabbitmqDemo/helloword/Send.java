@@ -32,6 +32,11 @@ public class Send {
 			// 3. 从connection中获取channel
 			channel = connection.createChannel();
 			// 4. 处理channel
+			// 队列名字
+			// 参数二，是否持久化队列，我们的队列模式是在内存中的，如果rabbitmq重启会丢失，如果我们设置为true会保存到erlang自带的数据库中
+			// 参数三，是否排外，有两个作用，第一个当我们的链接关闭后是否会自动删除队列，作用二是否私有当前队列，如果私有了，其他通道不可访问的当前队列，一般适用于一个消费者的模式
+			// 参数四 是否自动删除
+			// 参数五 我们的一些其他参数
 			channel.queueDeclare(QUEUE_NAME,false,false,false,null);
 			String msg = "Hello World1";
 			channel.basicPublish("",QUEUE_NAME,null,msg.getBytes());
