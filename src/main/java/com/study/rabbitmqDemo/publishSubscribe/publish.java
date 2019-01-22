@@ -1,7 +1,10 @@
 package com.study.rabbitmqDemo.publishSubscribe;
 
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.ConfirmListener;
 import com.study.rabbitmqDemo.util.RabbitConnectionUtil;
+
+import java.io.IOException;
 
 public class publish {
     // 交换机名字
