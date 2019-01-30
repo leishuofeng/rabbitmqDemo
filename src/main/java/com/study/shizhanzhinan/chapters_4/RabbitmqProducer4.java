@@ -22,8 +22,8 @@ public class RabbitmqProducer4 {
         channel.exchangeDeclare(EXCHANGE_NAME, RabbimqConstant.EXCHANGE_TYPE_DIRECT, true, false, null);
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
-        channel.basicPublish(EXCHANGE_NAME,
-                ROUTING_KEY,
+        channel.basicPublish("",
+                "",
                 true,
                 null,
                 "mandatory 参数为 true 时".getBytes(CHARSET_UTF8));
@@ -36,6 +36,5 @@ public class RabbitmqProducer4 {
                 System.out.println("找不到 ： "+new String(body));
             }
         });
-        channel.close();
     }
 }
