@@ -26,6 +26,7 @@ public class SwRabbitmqUtil {
 
     }
 
+
     public static boolean sendMessageToRabbitmqServer(){
 
         return false;
