@@ -1,6 +1,7 @@
 package com.study.shizhanzhinan.chapters_1;
 
 import com.rabbitmq.client.*;
+import com.study.rabbitmqDemo.util.RabbitmqPropertiesTools;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -10,17 +11,15 @@ public class RabbitmqConsumer {
     private static final String EXCHANGE_NAME = "交换机_helloWord";
     private static final String ROUTING_KEY = "路由_helloWorld";
     private static final String QUEUE_NAME = "队列_helloWorld";
-    private static final String IP_ADDRESS = "";
-    private static final int PORT = 5672;
 
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         Address[] addresses = new Address[]{
-                new Address(IP_ADDRESS,PORT)
+                new Address(RabbitmqPropertiesTools.getValue("rabbitmqConnectHost"),Integer.parseInt(RabbitmqPropertiesTools.getValue("rabbitmqClientPort")))
         };
 
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setUsername("");
-        factory.setPassword("");
+        factory.setUsername(RabbitmqPropertiesTools.getValue("rabbitmqUser"));
+        factory.setPassword(RabbitmqPropertiesTools.getValue("rabbitmqPassword"));
         // 这里的连接方式与生产者的demo有所不同
         // 创建链接
         Connection connection = factory.newConnection(addresses);

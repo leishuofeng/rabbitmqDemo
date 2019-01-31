@@ -15,8 +15,8 @@ import java.util.Properties;
 /**
  * @Author leishuofeng
  */
-public class RabbitMqConnectFatory {
-    static Logger log = LoggerFactory.getLogger(RabbitMqConnectFatory.class);
+public class RabbitmqConnectFatory {
+    static Logger log = LoggerFactory.getLogger(RabbitmqConnectFatory.class);
 
     private static Properties rabbitmqProperties = new Properties();
 

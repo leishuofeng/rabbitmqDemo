@@ -4,8 +4,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ReturnListener;
-import com.study.shizhanzhinan.constant.RabbimqConstant;
-import com.study.shizhanzhinan.util.RabbitMqConnectFatory;
+import com.study.shizhanzhinan.constant.RabbitmqConstant;
+import com.study.shizhanzhinan.util.RabbitmqConnectFatory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -17,12 +17,12 @@ public class RabbitmqProducer4 {
     private static final String CHARSET_UTF8 = "UTF-8";
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        Connection connection = RabbitMqConnectFatory.getConnection("test");
+        Connection connection = RabbitmqConnectFatory.getConnection("test");
         Channel channel = connection.createChannel();
-        channel.exchangeDeclare(EXCHANGE_NAME, RabbimqConstant.EXCHANGE_TYPE_DIRECT, true, false, null);
+        channel.exchangeDeclare(EXCHANGE_NAME, RabbitmqConstant.EXCHANGE_TYPE_DIRECT, true, false, null);
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
-        channel.basicPublish("",
+        channel.basicPublish(EXCHANGE_NAME,
                 "",
                 true,
                 null,
