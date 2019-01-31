@@ -6,9 +6,9 @@ import com.study.shizhanzhinan.util.RabbitmqConnectFatory;
 
 import java.io.IOException;
 
-public class ProducerUtil {
+public class SwRabbitmqUtil {
 
-    static private final String PRODUCER_NAME = "producer";
+    static private final String CONNECTION_KEY = "SWConnection";
 
     static private Connection connection;
 
@@ -16,7 +16,7 @@ public class ProducerUtil {
 
     static {
         try {
-            connection = RabbitmqConnectFatory.getConnection("producer");
+            connection = RabbitmqConnectFatory.getConnection(CONNECTION_KEY);
             channel = connection.createChannel();
             // 将信道开启事务
             channel.txSelect();
@@ -26,7 +26,7 @@ public class ProducerUtil {
 
     }
 
-    public static boolean sendMessagetoRabbitmq(){
+    public static boolean sendMessageToRabbitmqServer(){
 
         return false;
     }
